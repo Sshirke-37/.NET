@@ -1,55 +1,99 @@
-﻿// Program.cs
-using System;
-class Program
+﻿using System;
+using System.Security.Cryptography.X509Certificates;
+namespace Assignment2
 {
-    static void Main(string[] args)
+    internal class Program
     {
-        //Even Odd
-        int myNumber = 7;
-        EvenOdd.CheckEvenOrOdd(myNumber);
-        //Console.ReadLine();
+        //Even-Odd Function
+        static void CheckEvenOdd(int num)
+        {
+            if (num % 2 == 0)
+            { 
+                Console.WriteLine($"{num} is Even");
+            }
+            else
+            {
+                Console.WriteLine($"{num} is Odd");
+            }
+        }
 
-        //Postive Negative
-        int positiveNegativeNumber = 0;
-        PositiveNegative.CheckPositiveNegative(positiveNegativeNumber);
+        //Positive-Negative Function
+        static void CheckPostiveNegative(int num)
+        {
+            if (num >= 0)
+            {
+                Console.WriteLine($"{num} is Positive");
+            }
+            else
+            {
+                Console.WriteLine($"{num} is Negative");
+            }
+        }
 
-        //Greater amongst three numbers
-        int num1 = -200, num2 = -100, num3 = -300;
-        LargestNumber.CheckLargeNumber(num1, num2, num3);
+        //Finding the largest of three numbers
+        static void FindLargest(int num1, int num2, int num3)
+        {
+            if (num1 >= num2 && num1 >= num3)
+            {
+                Console.WriteLine($"{num1} is greater than {num2},{num3}");
+            }
+            else if (num2 >= num1 && num2 >= num3)
+            {
+                Console.WriteLine($"{num2} is greater than {num1},{num3}");
+            }
+            else
+            {
+                Console.WriteLine($"{num3} is greater than {num1},{num2}");
+            }
+        }
 
-        //Swap two numbers
-        int a = 10, b = 30;
-        Swap.SwapNumbers(a, b);
+        //Swap 2 numbers
+        static void SwapNumbers(int a,int b)
+        {
+            int temp = a;
+            a = b;
+            b = temp;
+            Console.WriteLine($"After swapping: a = {a}, b = {b}");
+        }
 
-        //Sum of the multiples of 3 and 5 
-        SumOfMultiple.sumofmultiples();
+        //Sum of all the multiples of 3 and 5
+        static void FindSumOfMultiples(int limit)
+            {
+            int sum = 0;
+            for (int i = 1; i < limit; i++)
+            {
+                if (i % 3 == 0 || i % 5 == 0)
+                {
+                    sum += i;
+                }
+            }
+            Console.WriteLine($"The sum of all multiples of 3 and 5 below {limit} is {sum}");
+        }
 
-        //Sum of a digit of a number
-        SumOfDigitOfaNumber.CalculateSumOfDigits(12345);
+        //Sum of digits of a number
+        static void SumOfDigits(int num)
+        {
+            int sum = 0;
+            while (num > 0)
+            {
+                sum += num % 10;
+                num /= 10;
+            }
+            Console.WriteLine($"Sum of the given number is: "+sum);
+        }
 
-        //Reverse a number and check palindrome or not
-        ReverseNumberAndCheckPalindrome.ReverseAndCheckPalindrome(91519);
+        static void Main(string[] args)
+        {
+            //Console.WriteLine("Hello, World!");
+            CheckEvenOdd(4);
+            CheckPostiveNegative(0);
+            FindLargest(-100, 0, -200);
+            SwapNumbers(20, 60);
+            FindSumOfMultiples(10000);
+            SumOfDigits(153);
+        }
 
-        //Add,Sub,Mul,Div
-        Arithmetic.Calculate(10, 2);
 
-        //Check Grade Equivalent
-        Grade.CheckGradeStats("A");
 
-        //Upper To Lower Case and vise a versa
-        CaseCheck.CheckUpperLower('H');
-        CaseCheck.CheckUpperLower('h');
-
-        //Armstrong Number
-        Armstrong.CheckArmstrong(153);
-
-        //Reverse a number
-        ReverseNumber.Reverse(1287);
-
-        //Concatenate two strings
-        ConcatenateString.Concatenate("Soham", "Shirke");
-
-        //Length of a string
-        LengthString.PrintLength("Soham Shirke");
     }
 }
